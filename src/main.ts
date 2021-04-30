@@ -2,4 +2,11 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
-createApp(App).use(router).mount('#app')
+import titleMixin from '@/mixin/titleMixin'
+
+import 'papercss/dist/paper.min.css'
+
+createApp(App)
+  // .mixin(titleMixin)
+  .use(router)
+  .mount('#app')
