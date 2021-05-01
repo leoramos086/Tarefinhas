@@ -1,33 +1,62 @@
 <template>
   <div class="home paper container">
     <div class="row">
-      <div class="col sm-11">
+      <div class="col sm-11 form-input">
         <div class="form-group">
-          <label for="paperInputs2">Nova tarefa</label>
+          <label for="newTask">Nova tarefa</label>
           <input
             class="input-block"
             type="text"
-            id="paperInputs2"
+            id="newTask"
+            v-model="newTaskText"
+            @keyup.enter="addNewTodo"
             :placeholder="randomPlaceholder()"
           />
         </div>
       </div>
       <div class="col sm-1 form-button">
-        <button class="paper-btn btn-primary-outline btn-small">Enviar</button>
+        <button
+          class="paper-btn btn-primary-outline btn-small"
+          @click="addNewTodo"
+        >
+          Enviar
+        </button>
       </div>
+    </div>
+    <hr />
+    <div class="row">
+      <todo v-for="todo in todos" :key="todo.key" :data="todo"></todo>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
+import { addTodo, stateTodo } from '@/store/todoStore'
+import Todo from '@/components/Todo.vue'
 
 document.title = 'Tarefinhas'
 
 export default defineComponent({
   name: 'Home',
-  components: {},
+  components: {
+    Todo
+  },
   setup () {
+    const newTaskText = ref('')
+    const todos = computed(() => {
+      return stateTodo.todoList
+    })
+    // ❌: Não enviar vazio
+    function addNewTodo () {
+      addTodo({
+        text: newTaskText.value,
+        completed: false
+      })
+
+      newTaskText.value = ''
+    }
+
     function randomPlaceholder (): string {
       const placeholders: Array<string> = [
         'Levar lixo para fora',
@@ -44,6 +73,9 @@ export default defineComponent({
     }
 
     return {
+      addNewTodo,
+      todos,
+      newTaskText,
       randomPlaceholder
     }
   }
@@ -51,9 +83,26 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.container {
+  min-width: 600px;
+}
 .form-button {
-  margin-top: 55px;
   padding: 0;
   text-align: center;
+  @media screen and (min-width: 769px) {
+    margin-top: 55px;
+  }
+
+  .paper-btn {
+    @media screen and (max-width: 769px) {
+      width: 70%;
+    }
+  }
+}
+
+.form-input {
+  padding-left: 0;
+  padding-bottom: 0;
+  // padding-right: 0;
 }
 </style>

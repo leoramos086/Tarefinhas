@@ -1,5 +1,11 @@
 ::placeholder,
 ::-ms-input-placeholder,
 ::-ms-input-placeholder {
-  opacity: 0.6; 
+  opacity: 0.1;
+}
+
+body {
+  height: 100vh;
+  overflow-y: scroll;
+  
 }

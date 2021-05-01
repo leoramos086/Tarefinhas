@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header id="appHeader">
     <h2>Tarefinhas</h2>
     <!-- <div class="nav">
       <router-link to="/">Home</router-link> |
@@ -21,12 +21,8 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
-body {
-  height: 100vh;
-}
-
-header {
+<style lang="scss">
+#appHeader {
   display: flex;
   justify-content: center;
   align-items: center;

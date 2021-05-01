@@ -1,6 +1,6 @@
 import { readonly } from '@vue/reactivity'
-import todoModule from '@/Store/todo'
+import TodoModule from '@/store/todoStore'
 
 export default readonly({
-  Todo: todoModule()
+  Todo: TodoModule
 })
