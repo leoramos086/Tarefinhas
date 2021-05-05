@@ -3,6 +3,7 @@
 ## Resources
 - [Vue3](https://v3.vuejs.org/)
 - [PaperCss](https://www.getpapercss.com/)
+- [Typescript](https://www.typescriptlang.org/)
 
 ## Project setup
 ```
