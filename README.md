@@ -2,7 +2,7 @@
 
 ## DEMO
 
-[https://todo-vue3-lime.vercel.app/](https://todo-vue3-lime.vercel.app/)
+<a href="https://todo-vue3-lime.vercel.app/" target="_blank">https://todo-vue3-lime.vercel.app/</a>
 
 ## Resources
 - [Vue3](https://v3.vuejs.org/)
