@@ -1,5 +1,9 @@
 # todo-paper
 
+## Resources
+- [Vue3](https://v3.vuejs.org/)
+- [PaperCss](https://www.getpapercss.com/)
+
 ## Project setup
 ```
 yarn install
@@ -15,10 +19,3 @@ yarn serve
 yarn build
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
