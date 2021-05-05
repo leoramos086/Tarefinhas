@@ -24,8 +24,13 @@
       </div>
     </div>
     <hr />
-    <div class="row">
-      <todo v-for="todo in todos" :key="todo.key" :data="todo"></todo>
+
+    <todo v-for="(todo, index) in todos" :key="index" :data="todo"></todo>
+
+    <div class="row flex-center" v-if="!todos.length">
+      <p class="hax-text-centered">
+        Sem tarefas no momento, aproveite a vida! 😄
+      </p>
     </div>
   </div>
 </template>

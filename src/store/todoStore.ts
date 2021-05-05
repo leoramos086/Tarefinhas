@@ -1,34 +1,52 @@
 import { reactive, readonly } from 'vue'
 
 export interface ITodo {
-  key?: string
+  key: string
   text: string
   completed: boolean
 }
 
+const todoMockup: ITodo[] = [
+  {
+    key: 'xqlmb2l5adr',
+    text: 'Tomar Café',
+    completed: false
+  }
+]
+
 const state = reactive({
-  todoList: <ITodo[]>[
-    {
-      key: 'xqlmb2l5adr',
-      text: 'Brasilieira',
-      completed: false
-    }
-  ]
+  todoList: <ITodo[]>[]
 })
 
-function addTodo (todo: ITodo): void {
+function addTodo (todo: Pick<ITodo, 'completed' | 'text'>): void {
   const newTodo = {
     ...todo,
     key: randomKey()
   }
 
-  state.todoList.push(newTodo)
+  state.todoList.push(reactive(newTodo))
+  console.log(state.todoList)
 }
 
-function removeTodo (textTodo: string): void {
-  state.todoList = state.todoList.filter(todoItem => {
-    return todoItem.key !== textTodo
+function updateTodo (key: string, todoChanged: Partial<ITodo>) {
+  state.todoList = state.todoList.map(todo => {
+    if (todo.key === key) {
+      const newTodo = {
+        ...todo,
+        ...todoChanged
+      }
+      return newTodo
+    }
+    return todo
   })
+}
+
+function removeTodo (key: string): void {
+  console.log(state.todoList)
+  state.todoList = state.todoList.filter(todoItem => {
+    return todoItem.key !== key
+  })
+  console.log(state.todoList)
 }
 
 function randomKey (): string {
@@ -39,4 +57,4 @@ function randomKey (): string {
 
 export const stateTodo = readonly(state)
 
-export { addTodo, removeTodo }
+export { addTodo, removeTodo, updateTodo }
