@@ -14,7 +14,7 @@
             :checked="data.completed"
           />
           <span :class="{ 'has-completed': data.completed }" v-if="!hasEditable"
-            >{{ data.text }} | {{ data.key }}</span
+            >{{ data.text }}</span
           >
           <span v-else></span>
         </label>
